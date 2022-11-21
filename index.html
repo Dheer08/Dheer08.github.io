@@ -1,51 +1,13 @@
 <html>
-    <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script src="https://webtracking-v01.bpmonline.com/JS/track-cookies.js"></script>
-        <script src="https://webtracking-v01.bpmonline.com/JS/create-object.js"></script>
-        <script>
-            var config = {
-                fields: {
-                    "Name": "LeadName", // Name of a visitor, submitting the page
-                    //"Email": "css-selector", // Visitor's email
-                    //"Zip": "css-selector", // Visitor's ZIP code
-                    //"MobilePhone": "css-selector", // Visitor's phone number
-                    //"Company": "css-selector", // Name of a company (for business landing pages)
-                    //"Industry": "css-selector", // Company industry (for business landing pages)
-                    //"FullJobTitle": "css-selector", // Visitor's job title (for business landing pages)
-                    //"UseEmail": "css-selector", // Logical value: 'true' equals to visitor's opt-in to receive emails
-                    //"City": "css-selector", // City
-                    //"Country": "css-selector", // Country
-                    //"Commentary": "css-selector" // Notes
-                },
-                contactFields: {
-                    //"FullName": "css-selector", // Name of a contact
-                    //"Phone": "css-selector", // Contact's mobile phone
-                    //"Email": "css-selector" // Contact's email
-                },
-                customFields: {},
-                landingId: "a7a4ef9f-aa1f-43e8-a5dc-628b0aba8ff6",
-                serviceUrl: "https://019746-marketing.creatio.com/0/ServiceModel/GeneratedObjectWebFormService.svc/SaveWebFormObjectData",
-                redirectUrl: ""
-            };
-            function createObject() {
-                console.log("Submitted the form");
-    landing.createObjectFromLanding(config);
-            }
-            function initLanding() {
-    landing.initLanding(config);
-            }
-            jQuery(document).ready(initLanding);
-        </script>
-    </head>
-    <body>
-        <h1>Lead Registration Form</h1>
-        <form onSubmit="createObject(); return false">
-            <label for="LeadName">First name:</label><br>
-            <input type="text" id="LeadName" name="LeadName"><br>
-            <input type="submit" value="Submit">
-        </form>
-        <h3>Thank you</h3>
-    </body>
+  <head>
+    <title>reCAPTCHA demo: Simple page</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  </head>
+  <body>
+    <form action="?" method="POST">
+      <div class="g-recaptcha" data-sitekey="6LcEbSIjAAAAAOqXFOa-jKEAcHEbA1crDBI6bQCN"></div>
+      <br/>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
 </html>
-
