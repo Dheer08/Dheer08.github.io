@@ -4,10 +4,13 @@
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   </head>
   <body>
-    <form action="thankyou.html" method="POST">
+    <form  method="POST">
+        <label>First Name</label>
+        <input type="text" placeholder="Enter your first name">
       <div class="g-recaptcha" data-sitekey="6LcEbSIjAAAAAOqXFOa-jKEAcHEbA1crDBI6bQCN"></div>
       <br/>
-      <input type="submit" value="Submit">
+      <input type="submit" value="Submit" onclick="ClickSubmit()">
     </form>
+    <script src="assets/js/init.js"></script>
   </body>
 </html>
