@@ -2,6 +2,7 @@
   <head>
     <title>reCAPTCHA demo: Simple page</title>
     <script src="https://www.google.com/recaptcha/api.js" async defer>
+      console.log("hello");
       if(grecaptcha && grecaptcha.getResponse().length > 0)
         {
             //the recaptcha is checked
