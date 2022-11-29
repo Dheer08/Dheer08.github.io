@@ -15,8 +15,10 @@
 
       
 
-        async function fetchAsync (url) {
-          url = "http://localhost:83/0/ServiceModel/DheerAnonymousConfigurationService.svc/PostContactIdByName?CName=Vincent1234"
+        async function fetchAsync () {
+          var name = document.getElementById("fullName").value;
+          console.log(name);
+          url = `http://localhost:83/0/ServiceModel/DheerAnonymousConfigurationService.svc/PostContactIdByName?CName=${name}`
           let response = await fetch(url);
           let data = await response.json();
           console.log(data);
@@ -28,7 +30,6 @@
     <form id="my_captcha_form">
       <label>Full Name : </label>
       <input type="text"  id="fullName">
-
       <button id="submitBtn" onclick="fetchAsync()" >Submit</button>
     </form>
   </body>
