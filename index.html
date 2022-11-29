@@ -2,27 +2,22 @@
   <head>
     <title>reCAPTCHA demo: Simple page</title>
     <script src="https://www.google.com/recaptcha/api.js" async defer>
-      console.log("hello");
-      if(grecaptcha && grecaptcha.getResponse().length > 0)
-        {
-            //the recaptcha is checked
-            // Do what you want here
-            $('#submitBtn').removeAttr('disabled');
-            console.log("Hello it is verified");
-            alert('Well, recaptcha is checked !');
-        }
-        else
-        {
-            //The recaptcha is not cheched
-            //You can display an error message here
-            alert('Oops, you have to check the recaptcha !');
-        }
-
       
-    function recaptchaCallback() {
-           $('#submitBtn').removeAttr('disabled');
-           console.log("Hello it is verified");
-    };
+      document.getElementById("my_captcha_form").addEventListener("submit",function(evt)
+       {
+  
+          var response = grecaptcha.getResponse();
+          if(response.length == 0) 
+          { 
+            //reCaptcha not verified
+            alert("please verify you are humann!"); 
+            evt.preventDefault();
+            return false;
+          }
+          //captcha verified
+          //do the rest of your validations here
+          PostContact();
+        });
     function PostContact(){
           console.log('Hello')
           var x = document.getElementById("fullName").value;
@@ -43,12 +38,12 @@
     </script>
   </head>
   <body>
-    <form action="?" method="POST">
+    <form action="?" method="POST" id="my_captcha_form">
       <label>Full Name : </label>
-      <input type="text" value="fullName" id="fullName">
-      <div class="g-recaptcha" data-callback="recaptchaCallback()" data-sitekey="6LcEbSIjAAAAAOqXFOa-jKEAcHEbA1crDBI6bQCN"></div>
+      <input type="text"  id="fullName">
+      <div class="g-recaptcha" data-sitekey="6LcEbSIjAAAAAOqXFOa-jKEAcHEbA1crDBI6bQCN"></div>
       <br/>
-      <button id="submitBtn" onclick="PostContact()" disabled>Submit</button>
+      <button id="submitBtn" onclick="PostContact()" >Submit</button>
     </form>
   </body>
 </html>
