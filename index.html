@@ -3,7 +3,28 @@
     <title>reCAPTCHA demo: Simple page</title>
     <script src="https://www.google.com/recaptcha/api.js" async defer>
       
-      document.getElementById("my_captcha_form").addEventListener("submit",function(evt)
+     
+    function PostContact(){
+          console.log('Hello')
+          var x = document.getElementById("fullName").value;
+          let request = new XMLHttpRequest();
+          console.log("Heelo");
+          request.open("GET",`http://localhost:83/0/ServiceModel/DheerAnonymousConfigurationService.svc/PostContactIdByName?CName=${x}`);
+          request.send();
+          request.onload = () => {
+            console.log(request);
+            if(request.status == 200)
+            {
+              console.log(JSON.parse(request.response));
+            }
+            else{
+              console.log(`error ${request.status} ${request.statusText}`);
+            }
+          }
+        }
+        function Verification()
+        {
+          document.getElementById("my_captcha_form").addEventListener("submit",function(evt)
        {
   
           var response = grecaptcha.getResponse();
@@ -18,22 +39,6 @@
           //do the rest of your validations here
           PostContact();
         });
-    function PostContact(){
-          console.log('Hello')
-          var x = document.getElementById("fullName").value;
-          let request = new XMLHttpRequest();
-          request.open("GET",`http://localhost:83/0/ServiceModel/DheerAnonymousConfigurationService.svc/PostContactIdByName?CName=${x}`);
-          request.send();
-          request.onload = () => {
-            console.log(request);
-            if(request.status == 200)
-            {
-              console.log(JSON.parse(request.response));
-            }
-            else{
-              console.log(`error ${request.status} ${request.statusText}`);
-            }
-          }
         }
     </script>
   </head>
@@ -43,7 +48,7 @@
       <input type="text"  id="fullName">
       <div class="g-recaptcha" data-sitekey="6LcEbSIjAAAAAOqXFOa-jKEAcHEbA1crDBI6bQCN"></div>
       <br/>
-      <button id="submitBtn" onclick="PostContact()" >Submit</button>
+      <button id="submitBtn" onclick="Verification()" >Submit</button>
     </form>
   </body>
 </html>
