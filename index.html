@@ -1,65 +1,22 @@
 <html>
   <head>
-    <title>Lead Registration page page</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://webtracking-v01.bpmonline.com/JS/track-cookies.js"></script>
-    <script src="https://webtracking-v01.bpmonline.com/JS/create-object.js"></script>
-    <script>
-    
-    /**
-    * Replace the "css-selector" placeholders in the code below with the element selectors on your landing page.
-    * You can use #id or any other CSS selector that will define the input field explicitly.
-    * Example: "Email": "#MyEmailField".
-    * If you don't have a field from the list below placed on your landing, leave the placeholder or remove the line.
-    */
-    var config = {
-            fields: {
-                "Full Name": "#name-field", // Visitor's name code
-                "Email": "#email-field", // Visitor's email
-                "Phone": "#phone-field", // Visitor's phone number
-                "Date Of Birth": "#dob-field", // Case subject
-            },
-            landingId: "78444970-90a9-432c-9931-01cdc1e4720e",
-            serviceUrl: "https://019746-marketing.creatio.com/0/ServiceModel/GeneratedObjectWebFormService.svc/SaveWebFormObjectData",
-            onSuccess: function(response) {
-                window.alert(response.resultMessage);
-            },
-            onError: function(response) {
-                window.alert(response.resultMessage);
-            }
-
-        };
-    /**
-    * The function below creates a object from the submitted data.
-    * Bind this function call to the "onSubmit" event of the form or any other elements events.
-    * Example: <form class="mainForm" name="landingForm" onSubmit="createObject(); return false">
-    */
-    function createObject() {
-        landing.createObjectFromLanding(config);
-    }
-    /**
-    * The function below inits landing page using URL parameters.
-    */
-    function initLanding() {
-        landing.initLanding(config);
-    }
-    jQuery(document).ready(initLanding);
+    <title>reCAPTCHA demo: Explicit render after an onload callback</title>
+    <script type="text/javascript">
+      var onloadCallback = function() {
+        grecaptcha.render('html_element', {
+          'sitekey' : '6LcEbSIjAAAAAOqXFOa-jKEAcHEbA1crDBI6bQCN'
+        });
+      };
     </script>
   </head>
   <body>
-    <div>
-      <h2>Registration form</h2>
-      <form class="mainForm" name="landingForm" onSubmit="createObject(); return false">
-          Full Name:<br>
-          <input type="text" name="inputid" id="name-field" required><br><br>
-          Email:<br>
-          <input type="email" name="Email" id="email-field" required ><br><br>
-          Phone:<br>
-          <input type="tel" name="Phone" id="phone-field"  pattern="[0-9]{10}" required ><br><br>
-          Date Of Birth:<br>
-          <input type="date" name="inputDob" id="dob-field" min="2003-01-01" max="2017-01-01" required ><br><br>
-          <input type="submit"  form="landingForm" value="Send Request" onclick="createObject()" />
-      </form>
-  </div>
+    <form action="?" method="POST">
+      <div id="html_element"></div>
+      <br>
+      <input type="submit" value="Submit">
+    </form>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+        async defer>
+    </script>
   </body>
 </html>
