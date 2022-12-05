@@ -2,8 +2,6 @@
   <head>
     <title>reCAPTCHA demo: Simple page</title>
     <script>
-      
-     
     function PostContact(){
           console.log('Hello')
           let response = fetch('http://localhost:83/0/ServiceModel/DheerAnonymousConfigurationService.svc/PostContactIdByName?CName=Vincent123')
@@ -12,18 +10,17 @@
           })
           
         }
-
-      
-
         async function fetchAsync () {
           var name = document.getElementById("fullName").value;
           console.log(name);
           url = `http://localhost:83/0/ServiceModel/DheerAnonymousConfigurationService.svc/PostContactIdByName?CName=${name}`
-          let response = await fetch(url);
-          let data = await response.json();
-          console.log(data);
+
+          const xhr = new XMLHttpRequest();
+          xhr.open("GET", url);
+          xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+          xhr.onreadystatechange = handler;
+          xhr.send();
         }
-    
     </script>
   </head>
   <body>
