@@ -3,9 +3,10 @@
     <title>reCAPTCHA demo: Simple page</title>
     <script>
     function PostContact(){
-          console.log('Hello')
-          let name = document.getElementById("submitBtn").value;
-          let endurl = "http://localhost:83/0/ServiceModel/DheerAnonymousConfigurationService.svc/PostContactIdByName?CName="+name;
+          
+          let name = document.getElementById("fullName").value;
+          console.log(name);
+          let endurl = `http://localhost:83/0/ServiceModel/DheerAnonymousConfigurationService.svc/PostContactIdByName?CName=${name}`
           let response = fetch(endurl)
           .then(data => {
           console.log(data.json()); 
@@ -18,7 +19,7 @@
     <form id="my_captcha_form">
       <label>Full Name : </label>
       <input type="text"  id="fullName">
-      <button id="submitBtn" onclick="PostContact()" >Submit</button>
+      <a href="thankyou.html" onclick="PostContact()">Submit</a>
     </form>
   </body>
 </html>
