@@ -4,22 +4,13 @@
     <script>
     function PostContact(){
           console.log('Hello')
-          let response = fetch('http://localhost:83/0/ServiceModel/DheerAnonymousConfigurationService.svc/PostContactIdByName?CName=Vincent123')
+          let name = document.getElementById("submitBtn").value;
+          let endurl = "http://localhost:83/0/ServiceModel/DheerAnonymousConfigurationService.svc/PostContactIdByName?CName="+name;
+          let response = fetch(endurl)
           .then(data => {
           console.log(data.json()); 
           })
           
-        }
-        async function fetchAsync () {
-          var name = document.getElementById("fullName").value;
-          console.log(name);
-          url = `http://localhost:83/0/ServiceModel/DheerAnonymousConfigurationService.svc/PostContactIdByName?CName=${name}`
-
-          const xhr = new XMLHttpRequest();
-          xhr.open("GET", url);
-          xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-          xhr.onreadystatechange = handler;
-          xhr.send();
         }
     </script>
   </head>
@@ -27,7 +18,7 @@
     <form id="my_captcha_form">
       <label>Full Name : </label>
       <input type="text"  id="fullName">
-      <button id="submitBtn" onclick="fetchAsync()" >Submit</button>
+      <button id="submitBtn" onclick="PostContact()" >Submit</button>
     </form>
   </body>
 </html>
