@@ -2,8 +2,12 @@
   <head>
     <title>reCAPTCHA demo: Simple page</title>
     <script>
+      var onloadCallback = function() {
+        grecaptcha.render('html_element', {
+          'sitekey' : '6LcEbSIjAAAAAOqXFOa-jKEAcHEbA1crDBI6bQCN'
+        });
+      };
     function PostContact(){
-          
           let name = document.getElementById("fullName").value;
           console.log(name);
           let endurl = `http://localhost:83/0/ServiceModel/DheerAnonymousConfigurationService.svc/PostContactIdByName?CName=${name}`
@@ -19,7 +23,12 @@
     <form id="my_captcha_form">
       <label>Full Name : </label>
       <input type="text"  id="fullName">
+      <div id="html_element"></div>
+      <br>
       <a href="thankyou.html" onclick="PostContact()">Submit</a>
     </form>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+        async defer>
+    </script>
   </body>
 </html>
