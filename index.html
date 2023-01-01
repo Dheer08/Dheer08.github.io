@@ -1,11 +1,9 @@
 <html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://www.google.com/recaptcha/api.js"></script>
-    <title>reCAPTCHA</title>
+    <title>reCAPTCHA demo: Simple page</title>
     <script>
     function PostContact(){
+          
           let name = document.getElementById("fullName").value;
           console.log(name);
           let endurl = `http://localhost:83/0/ServiceModel/DheerAnonymousConfigurationService.svc/PostContactIdByName?CName=${name}`
@@ -21,8 +19,7 @@
     <form id="my_captcha_form">
       <label>Full Name : </label>
       <input type="text"  id="fullName">
-      <div class="g-recaptcha" data-sitekey="6LcEbSIjAAAAAOqXFOa-jKEAcHEbA1crDBI6bQCN"></div>
-<button class="g-recaptcha" data-sitekey="6LcEbSIjAAAAAOqXFOa-jKEAcHEbA1crDBI6bQCN" data-callback='onSubmit'data-action='submit' onclick="PostContact()">Submit</button>
-     </form>
+      <a href="thankyou.html" onclick="PostContact()">Submit</a>
+    </form>
   </body>
 </html>
