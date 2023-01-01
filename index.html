@@ -1,36 +1,22 @@
 <html>
-  <head>
-    <title>reCAPTCHA demo: Simple page</title>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://www.google.com/recaptcha/api.js"></script>
-    <script>
-      function onSubmit(token) {
-        document.getElementById("my_captcha_form").submit();
-        window.open("thankyou.html");
-        PostContact();
-    }
-    function PostContact(){
-          
-          let name = document.getElementById("fullName").value;
-          console.log(name);
-          let endurl = `http://localhost:83/0/ServiceModel/DheerAnonymousConfigurationService.svc/PostContactIdByName?CName=${name}`
-          let response = fetch(endurl)
-          .then(data => {
-          console.log(data.json()); 
-          })
-          
-        }
-    </script>
-  </head>
-  <body>
-    <form id="my_captcha_form">
-      <label>Full Name : </label>
-      <input type="text"  id="fullName">
-      <a href="thankyou.html" onclick="PostContact()">Submit</a>
-      <div class="g-recaptcha" data-sitekey="6LcEbSIjAAAAAOqXFOa-jKEAcHEbA1crDBI6bQCN"></div>
-<button class="g-recaptcha" data-sitekey="6LcEbSIjAAAAAOqXFOa-jKEAcHEbA1crDBI6bQCN" data-callback='onSubmit'data-action='submit'>Submit</button>
-    </form>
-  </body>
-</html>
+<head>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<meta charset="UTF-8">
+
+<title>reCAPTCHA </title>
+
+<script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+<body>
+<h1> Integrating Google reCAPTCHA Demo </h1>
+
+<form action="action.php" method="post">
+Name : <input type="text" name="name"><br>
+City : <input type="text" name="city"><br><br>
+<div class="g-recaptcha" data-sitekey="6LcEbSIjAAAAAOqXFOa-jKEAcHEbA1crDBI6bQCN"></div>
+<input type="submit" name="submit" value="submit">
+
+</form>
+
+
+    </body>
