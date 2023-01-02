@@ -3,22 +3,6 @@
     <title>reCaptcha validation demo</title>
      <script src="https://www.google.com/recaptcha/api.js" async defer></script>
      <script>
-      document.getElementById("my_captcha_form").addEventListener("submit",function(evt)
-          {
-          
-          var response = grecaptcha.getResponse();
-          if(response.length == 0) 
-          { 
-            //reCaptcha not verified
-            alert("please verify you are humann!"); 
-            //evt.preventDefault();
-            //return false;
-          }
-          //captcha verified
-          //do the rest of your validations here
-          PostContact();
-          
-        });
         function PostContact(){
           
              
@@ -44,13 +28,13 @@
   </head>
   <body>
 <div class="form_container">
-  <form action="#" id="my_captcha_form">
+  <form  id="my_captcha_form">
     <label>Full Name : </label>
     <input type="text"  id="fullName">
     <div class="g-recaptcha" 
 data-sitekey="6Ld6nsIjAAAAADm3FumgKqPZLyJX3Rm6S0-5-Nap" ></div>
     <p>
-    <button type="submit" onclick="PostContact()">Submit</button>
+    <button type="submit" id="myBtn" onclick="PostContact()">Submit</button>
     </p>
   </form>
 </div>
