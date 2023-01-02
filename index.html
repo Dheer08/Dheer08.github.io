@@ -4,44 +4,50 @@
      <script src="https://www.google.com/recaptcha/api.js" async defer></script>
      <script>
       document.getElementById("my_captcha_form").addEventListener("submit",function(evt)
-        {
-        
-        var response = grecaptcha.getResponse();
-        if(response.length == 0) 
-        { 
-          //reCaptcha not verified
-          alert("please verify you are humann!"); 
-          evt.preventDefault();
-          console.log("heelo");
-          return false;
-        }
-        //captcha verified
-        //do the rest of your validations here
-        PostContact();
-
-        
-      });
-      function PostContact(){
+          {
           
-          let name = document.getElementById("fullName").value;
+          var response = grecaptcha.getResponse();
+          if(response.length == 0) 
+          { 
+            //reCaptcha not verified
+            alert("please verify you are humann!"); 
+            //evt.preventDefault();
+            //return false;
+          }
+          //captcha verified
+          //do the rest of your validations here
+          PostContact();
+          
+        });
+        function PostContact(){
+          
+             
+          var response = grecaptcha.getResponse();
+          if(response.length == 0) 
+          {
+            alert("Please verify you are human");
+          }
+          else{
+            let name = document.getElementById("fullName").value;
           console.log(name);
           let endurl = `http://localhost:83/0/ServiceModel/DheerAnonymousConfigurationService.svc/PostContactIdByName?CName=${name}`
           let response = fetch(endurl)
           .then(data => {
           console.log(data.json()); 
           })
+          }
+         
           
         }
      </script>
   </head>
   <body>
 <div class="form_container">
-  <form action="" id="my_captcha_form">
+  <form action="#" id="my_captcha_form">
     <label>Full Name : </label>
     <input type="text"  id="fullName">
     <div class="g-recaptcha" 
-data-sitekey="6Ld6nsIjAAAAADm3FumgKqPZLyJX3Rm6S0-5-Nap" 
-></div>
+data-sitekey="6Ld6nsIjAAAAADm3FumgKqPZLyJX3Rm6S0-5-Nap" ></div>
     <p>
     <button type="submit" >Submit</button>
     </p>
